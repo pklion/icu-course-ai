@@ -1,0 +1,546 @@
+/**
+ * 3-Pane Layout, Brand Header in Left Pane, and Neumorphic UI Components - Zen Mode
+ * Full side-by-side 3-pane layout for all screens > 768px.
+ * Clean 3-button bottom navigation bar for mobile / narrow tablet screens (<= 768px).
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main 3-Pane Container (Full 100vh on desktop/tablet > 768px) */
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+}
+
+/* Left Pane: Course Catalog (262px on desktop > 768px) */
+.left-pane {
+  width: 262px;
+  flex-shrink: 0;
+  background-color: var(--md-sys-color-surface);
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Brand Header integrated at the top of Left Pane */
+.left-pane-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 0 6px 0;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  margin-bottom: 6px;
+}
+
+.brand-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-sys-color-primary);
+  line-height: 1;
+}
+
+.brand-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.2px;
+}
+
+/* Middle Pane: Period Calendar Grid (Maximized Space) */
+.middle-pane {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--md-sys-color-background);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Right Pane: Dual-Mode (Syllabus / AI) */
+.right-pane {
+  width: 380px;
+  flex-shrink: 0;
+  background-color: var(--md-sys-color-surface);
+  border-left: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Right Pane Segmented Tab Header - Soft Sunken Container */
+.right-pane-tabs {
+  display: flex;
+  align-items: center;
+  background-color: var(--md-sys-color-surface-container);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  padding: 5px var(--space-xs);
+  gap: 6px;
+  box-shadow: var(--neumorph-inset);
+  flex-shrink: 0;
+}
+
+.pane-tab-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px var(--space-sm);
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  transition: var(--transition-smooth);
+}
+
+.pane-tab-btn.active {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--neumorph-raised);
+}
+
+.right-tab-content {
+  display: none;
+  flex: 1;
+  overflow: hidden;
+}
+
+.right-tab-content.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Neumorphic Buttons - Subtle Lift */
+.m3-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  line-height: 1.2;
+}
+
+.m3-button.filled {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: var(--neumorph-flat);
+}
+.m3-button.filled:hover {
+  filter: brightness(1.15);
+  box-shadow: var(--neumorph-raised);
+}
+.m3-button.filled:active {
+  box-shadow: var(--neumorph-inset);
+  transform: translateY(1px);
+}
+
+.m3-button.filled-danger {
+  background-color: #52525b;
+  color: #ffffff;
+  box-shadow: var(--neumorph-flat);
+}
+.m3-button.filled-danger:hover {
+  background-color: #3f3f46;
+  box-shadow: var(--neumorph-raised);
+}
+.m3-button.filled-danger:active {
+  box-shadow: var(--neumorph-inset);
+}
+
+.m3-button.tonal {
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: var(--neumorph-flat);
+}
+.m3-button.tonal:hover {
+  background-color: var(--md-sys-color-surface);
+  box-shadow: var(--neumorph-raised);
+}
+.m3-button.tonal:active {
+  box-shadow: var(--neumorph-inset);
+  transform: translateY(1px);
+}
+
+/* =========================================================
+ * Layer 1 Primitives: Modular UI Components
+ * ========================================================= */
+
+/* 1. Action Icon Component (Frame Layer + Glyph Layer + Pip Layer) */
+.ui-icon-btn, .m3-btn-icon {
+  --frame-size: var(--icon-frame-size, 34px);
+  --frame-radius: var(--icon-frame-radius, 10px);
+  width: var(--frame-size);
+  height: var(--frame-size);
+  min-width: var(--frame-size);
+  min-height: var(--frame-size);
+  border-radius: var(--frame-radius);
+  background-color: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: var(--neumorph-flat);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  transition: var(--transition-smooth);
+  user-select: none;
+}
+
+.ui-icon-btn:hover, .m3-btn-icon:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--neumorph-raised);
+}
+
+.ui-icon-btn:active, .m3-btn-icon:active,
+.ui-icon-btn.active, .m3-btn-icon.active {
+  box-shadow: var(--neumorph-inset);
+  transform: translateY(1px);
+}
+
+.ui-icon-btn.sm {
+  --frame-size: var(--icon-frame-size-sm, 28px);
+}
+
+/* Inner Glyph Layer: Pure icon vector rendering */
+.ui-icon-glyph {
+  --glyph-size: var(--icon-glyph-size, 18px);
+  width: var(--glyph-size);
+  height: var(--glyph-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.ui-icon-btn.sm .ui-icon-glyph {
+  --glyph-size: var(--icon-glyph-size-sm, 15px);
+}
+
+.ui-icon-glyph svg, .ui-icon-glyph .heroicon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Status Pip / Indicator Layer */
+.ui-icon-pip {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-outline);
+  border: 1.5px solid var(--md-sys-color-surface);
+  transition: var(--transition-smooth);
+}
+.ui-icon-pip.online {
+  background-color: #10b981;
+}
+
+/* 2. Segmented Control (Sunken Track + Elevated Sliding Pills) */
+.ui-segmented {
+  display: flex;
+  align-items: center;
+  background-color: var(--segmented-bg, var(--md-sys-color-surface-container));
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--segmented-radius, 12px);
+  padding: 3px;
+  gap: 3px;
+  box-shadow: var(--neumorph-inset);
+}
+
+.ui-segment-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 6px 10px;
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--segment-btn-radius, 8px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.ui-segment-btn:hover {
+  color: var(--md-sys-color-on-surface);
+}
+
+.ui-segment-btn.active {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--neumorph-flat);
+}
+
+.ui-segment-btn.active:hover {
+  box-shadow: var(--neumorph-raised);
+}
+
+/* 3. Form Field Primitives (Clean Layout-Driven Inputs) */
+.ui-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ui-field-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.ui-input, .ui-select, .m3-select {
+  height: var(--field-h, 36px);
+  padding: 0 10px;
+  font-family: inherit;
+  font-size: var(--field-font-size, var(--font-size-xs));
+  border: 1px solid var(--field-border, var(--md-sys-color-outline-variant));
+  border-radius: var(--field-radius, 10px);
+  background-color: var(--field-bg, var(--md-sys-color-surface-container));
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+  box-shadow: var(--neumorph-inset);
+  transition: var(--transition-smooth);
+  width: 100%;
+}
+
+.ui-input:focus, .ui-select:focus, .m3-select:focus {
+  border-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-surface);
+  box-shadow: var(--neumorph-inset), 0 0 0 1px var(--md-sys-color-primary);
+}
+
+.ui-select, .m3-select {
+  cursor: pointer;
+  box-shadow: var(--neumorph-flat);
+}
+.ui-select:focus, .m3-select:focus {
+  box-shadow: var(--neumorph-inset);
+}
+
+/* 4. Modern Compact Switch */
+.ui-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--field-radius, 10px);
+  background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: var(--neumorph-flat);
+  cursor: pointer;
+  user-select: none;
+}
+.ui-switch-row .label-text {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+}
+.ui-switch-track {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background-color: var(--md-sys-color-outline-variant);
+  position: relative;
+  transition: var(--transition-smooth);
+  box-shadow: var(--neumorph-inset);
+  flex-shrink: 0;
+}
+.ui-switch-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  transition: var(--transition-smooth);
+}
+input[type="checkbox"]:checked + .ui-switch-track {
+  background-color: var(--md-sys-color-primary);
+}
+input[type="checkbox"]:checked + .ui-switch-track .ui-switch-thumb {
+  transform: translateX(16px);
+}
+
+/* Loader */
+#appLoader {
+  position: fixed;
+  inset: 0;
+  background-color: var(--md-sys-color-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+#appLoader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+.spinner {
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--md-sys-color-outline-variant);
+  border-top-color: var(--md-sys-color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: var(--space-sm);
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 3-Button Mobile Navigation Bar (Hidden by default on screens > 768px) */
+.mobile-nav-bar {
+  display: none;
+}
+
+/* =========================================================
+ * Mobile Mode (STRICTLY <= 768px)
+ * 3-Button View Switching rather than sliding panes
+ * ========================================================= */
+@media (max-width: 768px) {
+  .app-body {
+    height: calc(100vh - 56px);
+  }
+
+  /* Hide all 3 panes by default on mobile */
+  .left-pane,
+  .middle-pane,
+  .right-pane {
+    display: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Show only the active view based on data-mobile-view attribute */
+  .app-body[data-mobile-view="catalog"] .left-pane {
+    display: flex !important;
+  }
+
+  .app-body[data-mobile-view="calendar"] .middle-pane {
+    display: flex !important;
+  }
+
+  .app-body[data-mobile-view="details"] .right-pane {
+    display: flex !important;
+  }
+
+  /* Fixed 3-Button Bottom Navigation Bar */
+  .mobile-nav-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: var(--md-sys-color-surface);
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 var(--space-xs);
+  }
+
+  .mobile-nav-btn {
+    flex: 1;
+    height: 44px;
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: inherit;
+    transition: var(--transition-smooth);
+  }
+
+  .mobile-nav-btn .nav-icon {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .mobile-nav-btn .nav-label {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .mobile-nav-btn.active {
+    background-color: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-primary);
+    box-shadow: var(--neumorph-inset);
+  }
+
+  .mobile-nav-btn.active .nav-label {
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,604 @@
+/**
+ * Right Pane: Direct Full-Height Syllabus View & Minimal AI Advisor - Subtle Neumorphic Zen
+ * Soft dual shadows, tactile inset inputs, and quiet monochrome aesthetic.
+ */
+
+/* Empty State */
+.syllabus-empty-zen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--md-sys-color-outline);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+/* Full Syllabus View */
+.syllabus-pane-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--md-sys-color-surface);
+}
+
+.syllabus-zen-bar {
+  padding: 12px var(--space-md);
+  background-color: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.syllabus-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.syllabus-title-group .code {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--md-sys-color-primary);
+}
+
+.syllabus-title-group .title {
+  font-size: var(--font-size-sm);
+  color: var(--md-sys-color-on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+}
+
+.syllabus-title-group .cr {
+  font-size: 11px;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  color: var(--md-sys-color-on-surface-variant);
+  box-shadow: var(--neumorph-flat);
+}
+
+.syllabus-zen-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.syllabus-iframe-container {
+  flex: 1;
+  display: flex;
+  background-color: #ffffff;
+}
+
+.syllabus-full-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #ffffff;
+}
+
+.no-url-msg {
+  padding: var(--space-xl);
+  color: var(--md-sys-color-outline);
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+/* ==============================================================
+   AI Assistant (Subtle Neumorphic Zen)
+   ============================================================== */
+
+.ai-assistant-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--md-sys-color-surface);
+  position: relative;
+}
+
+.ai-header {
+  padding: 12px var(--space-md);
+  background-color: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.ai-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.ai-avatar {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-sys-color-primary);
+}
+
+.ai-title {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--md-sys-color-on-surface);
+}
+
+.ai-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface-variant);
+  box-shadow: var(--neumorph-inset);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-outline);
+}
+
+.ai-status-badge.connected .status-dot {
+  background-color: #10b981;
+}
+
+.ai-status-badge.offline .status-dot {
+  background-color: var(--md-sys-color-outline);
+}
+
+.ai-header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Popdown Settings - Clean Layout-Driven Console */
+.ai-settings-panel {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  max-height: calc(100% - 55px);
+  overflow-y: auto;
+  background-color: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  padding: var(--space-md);
+  box-shadow: var(--neumorph-raised);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.ai-settings-panel.hidden {
+  display: none;
+}
+
+.settings-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xs);
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  margin-top: 4px;
+}
+
+/* Chat History - Soft Neumorphic Bubbles */
+.ai-chat-history {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.chat-message {
+  display: flex;
+  gap: var(--space-xs);
+  max-width: 100%;
+}
+
+.chat-message.user {
+  flex-direction: row-reverse;
+}
+
+.msg-avatar {
+  font-size: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-primary);
+  box-shadow: var(--neumorph-flat);
+}
+
+.msg-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-width: 86%;
+}
+
+.msg-bubble {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.chat-message.user .msg-bubble {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border-bottom-right-radius: 4px;
+  box-shadow: var(--neumorph-flat);
+}
+
+.chat-message.assistant .msg-bubble {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-bottom-left-radius: 4px;
+  box-shadow: var(--neumorph-card);
+}
+
+.msg-bubble code {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 2px 5px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* Recommended Course Cards in Chat */
+.recommended-courses-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.ai-course-card {
+  background-color: var(--card-bg-normal);
+  border: 1px solid var(--card-border-normal);
+  border-radius: var(--radius-xs);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: var(--neumorph-card);
+}
+
+.ai-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ai-card-code {
+  font-weight: 700;
+  font-size: var(--font-size-xs);
+  color: var(--md-sys-color-primary);
+}
+
+.ai-card-cr {
+  font-size: 11px;
+  color: var(--md-sys-color-outline);
+}
+
+.ai-card-title {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.ai-card-sched {
+  font-size: 11px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.ai-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  margin-top: 4px;
+}
+
+.ai-card-actions .m3-button {
+  padding: 3px 10px;
+  font-size: 11px;
+}
+
+/* Quick Topic Prompts - 1-Line Zen Horizontal Pill Bar */
+.ai-quick-prompts {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  padding: 6px var(--space-md);
+  background-color: var(--md-sys-color-surface-container);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.quick-chip {
+  background-color: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--neumorph-flat);
+  transition: var(--transition-smooth);
+}
+.quick-chip:hover {
+  background-color: var(--md-sys-color-surface);
+  box-shadow: var(--neumorph-hover);
+  transform: translateY(-1px);
+}
+.quick-chip:active {
+  box-shadow: var(--neumorph-inset);
+}
+
+/* Input Form - Inset Input with Soft Floating Send Button */
+.ai-input-form {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--md-sys-color-surface);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.ai-input-form input {
+  flex: 1;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-xs);
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+  box-shadow: var(--neumorph-inset);
+  transition: var(--transition-smooth);
+}
+.ai-input-form input:focus {
+  border-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-surface);
+  box-shadow: var(--neumorph-inset), 0 0 0 1px var(--md-sys-color-primary);
+}
+
+.ai-input-form .m3-button {
+  padding: 8px 18px;
+  font-size: var(--font-size-xs);
+}
+
+/* ==============================================================
+   ELA Special Custom Schedule Editor
+   ============================================================== */
+.ela-schedule-card {
+  background-color: var(--md-sys-color-surface-container);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.ela-schedule-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px var(--space-md);
+  background-color: var(--md-sys-color-surface);
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.ela-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.ela-title {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+}
+
+.ela-status-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+.ela-status-badge.customized {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.ela-status-badge.default {
+  background-color: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-outline);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.ela-collapse-btn {
+  background: none;
+  border: none;
+  color: var(--md-sys-color-outline);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  transition: transform 0.2s ease;
+}
+
+.ela-schedule-card.collapsed .ela-collapse-btn {
+  transform: rotate(-90deg);
+}
+
+.ela-schedule-card.collapsed .ela-schedule-body {
+  display: none;
+}
+
+.ela-schedule-body {
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.ela-guide-text {
+  font-size: 11px;
+  color: var(--md-sys-color-outline);
+  line-height: 1.4;
+}
+
+.ela-matrix-container {
+  overflow-x: auto;
+  margin: 4px 0;
+}
+
+.ela-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  text-align: center;
+}
+
+.ela-matrix-table th {
+  padding: 2px 4px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-weight: 600;
+  font-size: 10px;
+}
+
+.ela-matrix-table td {
+  padding: 2px;
+}
+
+.ela-matrix-table .period-label {
+  font-weight: 700;
+  color: var(--md-sys-color-outline);
+  font-size: 10px;
+  width: 18px;
+}
+
+.ela-slot-cell {
+  width: 100%;
+  min-width: 32px;
+  height: 24px;
+  padding: 0;
+  font-size: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.ela-slot-cell:hover {
+  border-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.ela-slot-cell.active {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary, #ffffff);
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.ela-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.ela-input-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex: 1;
+  min-width: 180px;
+}
+
+.ela-input-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  white-space: nowrap;
+}
+
+.ela-input-group input {
+  flex: 1;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-family: monospace;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--radius-xs);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--neumorph-inset);
+  outline: none;
+}
+
+.ela-input-group input:focus {
+  border-color: var(--md-sys-color-primary);
+}
+
+.ela-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ela-btn-group .m3-button {
+  padding: 4px 10px;
+  font-size: 11px;
+  height: 28px;
+}

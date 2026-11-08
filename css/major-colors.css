@@ -1,0 +1,379 @@
+/* =========================================================
+ * Pastel Vintage Color Palette for Course Majors
+ * Soft, desaturated vintage tones with middle-contrast borders
+ * and rich heritage accents. Harmonizes with Zen Neumorphism.
+ * ========================================================= */
+
+:root {
+  /* 1. Sage (Natural Sciences, Biology, Environment) */
+  --major-sage-bg: #eef5f0;
+  --major-sage-border: #c4d8c8;
+  --major-sage-accent: #4e7a57;
+  --major-sage-text: #1e3824;
+
+  /* 2. Terracotta (Sociology, Education, Media & Society) */
+  --major-terracotta-bg: #f9eee8;
+  --major-terracotta-border: #dfc5b9;
+  --major-terracotta-accent: #8f5442;
+  --major-terracotta-text: #401f16;
+
+  /* 3. Ochre (Economics, Development, Comparative Education) */
+  --major-ochre-bg: #f7f3e8;
+  --major-ochre-border: #dcd2ba;
+  --major-ochre-accent: #84713e;
+  --major-ochre-text: #3d3316;
+
+  /* 4. Slate (Mathematics, Physics, Chemistry) */
+  --major-slate-bg: #edf2f7;
+  --major-slate-border: #bcc9db;
+  --major-slate-accent: #446387;
+  --major-slate-text: #192a3e;
+
+  /* 5. Rose (Literature, History, Curator Program) */
+  --major-rose-bg: #f9edf1;
+  --major-rose-border: #dfbfcb;
+  --major-rose-accent: #8e4e66;
+  --major-rose-text: #421b2b;
+
+  /* 6. Wisteria (Languages, ELA, JLP, World Languages, Linguistics) */
+  --major-wisteria-bg: #f1eff8;
+  --major-wisteria-border: #c8c0df;
+  --major-wisteria-accent: #65548c;
+  --major-wisteria-text: #2c1e42;
+
+  /* 7. Teal (Information Science, Global Studies, Teacher Cert) */
+  --major-teal-bg: #ecf5f5;
+  --major-teal-border: #b9dbda;
+  --major-teal-accent: #3d7775;
+  --major-teal-text: #163533;
+
+  /* 8. Amber (Business, Asian Studies, Law) */
+  --major-amber-bg: #f8f2e9;
+  --major-amber-border: #dfd0bc;
+  --major-amber-accent: #8a6d45;
+  --major-amber-text: #3e2e1a;
+
+  /* 9. Indigo (Politics, Public Policy, American Studies, IR) */
+  --major-indigo-bg: #edf0f7;
+  --major-indigo-border: #bac4dc;
+  --major-indigo-accent: #475984;
+  --major-indigo-text: #1c2640;
+
+  /* 10. Plum (Philosophy & Religion, Arts, Gender Studies) */
+  --major-plum-bg: #f5edf5;
+  --major-plum-border: #d6bed6;
+  --major-plum-accent: #7e4d7e;
+  --major-plum-text: #381c38;
+
+  /* 11. Coral (Music, Media Communication & Culture) */
+  --major-coral-bg: #f9f0eb;
+  --major-coral-border: #e0c5ba;
+  --major-coral-accent: #935a47;
+  --major-coral-text: #422015;
+
+  /* 12. Olive (Health & Physical Education, Peace, Service Learning) */
+  --major-olive-bg: #eff4ed;
+  --major-olive-border: #c4d8c0;
+  --major-olive-accent: #567950;
+  --major-olive-text: #21361c;
+
+  /* 13. Parchment (Anthropology, Japan Studies, General Ed) */
+  --major-parchment-bg: #f6f0ea;
+  --major-parchment-border: #d9c8bd;
+  --major-parchment-accent: #836250;
+  --major-parchment-text: #3c291e;
+
+  /* 14. Periwinkle (Psychology, Interdisciplinary Studies) */
+  --major-periwinkle-bg: #f0f1f9;
+  --major-periwinkle-border: #c2c7e2;
+  --major-periwinkle-accent: #566391;
+  --major-periwinkle-text: #202742;
+}
+
+/* =========================================================
+ * Dark Mode Overrides - Matte Vintage Hues
+ * ========================================================= */
+[data-theme="dark"] {
+  --major-sage-bg: #19241c;
+  --major-sage-border: #364f3c;
+  --major-sage-accent: #9fc3a5;
+  --major-sage-text: #e2ede5;
+
+  --major-terracotta-bg: #281b16;
+  --major-terracotta-border: #5b372b;
+  --major-terracotta-accent: #d99f8e;
+  --major-terracotta-text: #f5e6e0;
+
+  --major-ochre-bg: #262218;
+  --major-ochre-border: #54492f;
+  --major-ochre-accent: #d4c08b;
+  --major-ochre-text: #f4efe0;
+
+  --major-slate-bg: #17202c;
+  --major-slate-border: #33465f;
+  --major-slate-accent: #96b4d7;
+  --major-slate-text: #e0e9f4;
+
+  --major-rose-bg: #291a20;
+  --major-rose-border: #5b3443;
+  --major-rose-accent: #db9cb1;
+  --major-rose-text: #f6e5eb;
+
+  --major-wisteria-bg: #201a29;
+  --major-wisteria-border: #47375e;
+  --major-wisteria-accent: #b39fdb;
+  --major-wisteria-text: #ede3f5;
+
+  --major-teal-bg: #152424;
+  --major-teal-border: #304d4b;
+  --major-teal-accent: #89c0be;
+  --major-teal-text: #dfeeed;
+
+  --major-amber-bg: #272119;
+  --major-amber-border: #57462f;
+  --major-amber-accent: #d9be94;
+  --major-amber-text: #f4ede1;
+
+  --major-indigo-bg: #181e2b;
+  --major-indigo-border: #36425e;
+  --major-indigo-accent: #97a9d3;
+  --major-indigo-text: #e2e7f4;
+
+  --major-plum-bg: #251925;
+  --major-plum-border: #523252;
+  --major-plum-accent: #cb95cb;
+  --major-plum-text: #f2e3f2;
+
+  --major-coral-bg: #291c17;
+  --major-coral-border: #5d392b;
+  --major-coral-accent: #dda18d;
+  --major-coral-text: #f6e7e0;
+
+  --major-olive-bg: #192419;
+  --major-olive-border: #374f35;
+  --major-olive-accent: #9ec497;
+  --major-olive-text: #e2ede0;
+
+  --major-parchment-bg: #251e19;
+  --major-parchment-border: #544133;
+  --major-parchment-accent: #ceaf9a;
+  --major-parchment-text: #f2ebe1;
+
+  --major-periwinkle-bg: #1a1e2a;
+  --major-periwinkle-border: #394262;
+  --major-periwinkle-accent: #a4b0d8;
+  --major-periwinkle-text: #e5e8f5;
+}
+
+/* =========================================================
+ * Palette Selectors: Assigns CSS custom properties
+ * ========================================================= */
+[data-palette="sage"] {
+  --course-bg: var(--major-sage-bg);
+  --course-border: var(--major-sage-border);
+  --course-accent: var(--major-sage-accent);
+  --course-text: var(--major-sage-text);
+}
+
+[data-palette="terracotta"] {
+  --course-bg: var(--major-terracotta-bg);
+  --course-border: var(--major-terracotta-border);
+  --course-accent: var(--major-terracotta-accent);
+  --course-text: var(--major-terracotta-text);
+}
+
+[data-palette="ochre"] {
+  --course-bg: var(--major-ochre-bg);
+  --course-border: var(--major-ochre-border);
+  --course-accent: var(--major-ochre-accent);
+  --course-text: var(--major-ochre-text);
+}
+
+[data-palette="slate"] {
+  --course-bg: var(--major-slate-bg);
+  --course-border: var(--major-slate-border);
+  --course-accent: var(--major-slate-accent);
+  --course-text: var(--major-slate-text);
+}
+
+[data-palette="rose"] {
+  --course-bg: var(--major-rose-bg);
+  --course-border: var(--major-rose-border);
+  --course-accent: var(--major-rose-accent);
+  --course-text: var(--major-rose-text);
+}
+
+[data-palette="wisteria"] {
+  --course-bg: var(--major-wisteria-bg);
+  --course-border: var(--major-wisteria-border);
+  --course-accent: var(--major-wisteria-accent);
+  --course-text: var(--major-wisteria-text);
+}
+
+[data-palette="teal"] {
+  --course-bg: var(--major-teal-bg);
+  --course-border: var(--major-teal-border);
+  --course-accent: var(--major-teal-accent);
+  --course-text: var(--major-teal-text);
+}
+
+[data-palette="amber"] {
+  --course-bg: var(--major-amber-bg);
+  --course-border: var(--major-amber-border);
+  --course-accent: var(--major-amber-accent);
+  --course-text: var(--major-amber-text);
+}
+
+[data-palette="indigo"] {
+  --course-bg: var(--major-indigo-bg);
+  --course-border: var(--major-indigo-border);
+  --course-accent: var(--major-indigo-accent);
+  --course-text: var(--major-indigo-text);
+}
+
+[data-palette="plum"] {
+  --course-bg: var(--major-plum-bg);
+  --course-border: var(--major-plum-border);
+  --course-accent: var(--major-plum-accent);
+  --course-text: var(--major-plum-text);
+}
+
+[data-palette="coral"] {
+  --course-bg: var(--major-coral-bg);
+  --course-border: var(--major-coral-border);
+  --course-accent: var(--major-coral-accent);
+  --course-text: var(--major-coral-text);
+}
+
+[data-palette="olive"] {
+  --course-bg: var(--major-olive-bg);
+  --course-border: var(--major-olive-border);
+  --course-accent: var(--major-olive-accent);
+  --course-text: var(--major-olive-text);
+}
+
+[data-palette="parchment"] {
+  --course-bg: var(--major-parchment-bg);
+  --course-border: var(--major-parchment-border);
+  --course-accent: var(--major-parchment-accent);
+  --course-text: var(--major-parchment-text);
+}
+
+[data-palette="periwinkle"] {
+  --course-bg: var(--major-periwinkle-bg);
+  --course-border: var(--major-periwinkle-border);
+  --course-accent: var(--major-periwinkle-accent);
+  --course-text: var(--major-periwinkle-text);
+}
+
+/* =========================================================
+ * Application to Timetable Calendar Cards
+ * Aligned with left-pane catalog cards: white background by default,
+ * major-colored left-accent stripe, and course code pill colored with border.
+ * ========================================================= */
+.calendar-card[data-palette] {
+  background-color: var(--card-bg-normal);
+  border: 1px solid var(--card-border-normal);
+  border-left: 3.5px solid var(--course-accent);
+}
+
+.calendar-card[data-palette]:hover {
+  background-color: var(--course-bg);
+  border-color: var(--course-border);
+  border-left-color: var(--course-accent);
+}
+
+.calendar-card[data-palette] .card-header-line .code {
+  background-color: var(--course-bg);
+  border: 1px solid var(--course-border);
+  color: var(--course-accent);
+}
+
+/* Super Period Cards - White background by default with major left accent and colored code */
+.calendar-card[data-palette].card-super,
+.calendar-card[data-palette].card-super-p4,
+.calendar-card[data-palette].card-super-p5,
+.calendar-card[data-palette].card-super-p7 {
+  background-color: var(--card-bg-normal);
+  border: 1px solid var(--card-border-normal);
+  border-left: 3.5px solid var(--course-accent);
+  box-shadow: var(--neumorph-raised);
+}
+
+.calendar-card[data-palette].card-super:hover,
+.calendar-card[data-palette].card-super-p4:hover,
+.calendar-card[data-palette].card-super-p5:hover,
+.calendar-card[data-palette].card-super-p7:hover {
+  background-color: var(--course-bg);
+  border-color: var(--course-border);
+  border-left-color: var(--course-accent);
+}
+
+/* PE Activity Card with Pastel Vintage Palette */
+.calendar-card[data-palette].card-pe {
+  background-color: var(--card-bg-normal);
+  border: 1px solid var(--card-border-normal);
+  border-left: 3.5px solid var(--course-accent);
+}
+
+.calendar-card[data-palette].card-pe:hover {
+  background-color: var(--course-bg);
+  border-color: var(--course-border);
+  border-left-color: var(--course-accent);
+}
+
+/* Conflict state */
+.calendar-card[data-palette].card-conflict {
+  background-color: var(--card-bg-normal);
+  border: 1.5px dashed var(--md-sys-color-outline);
+  border-left: 3.5px solid var(--course-accent);
+}
+
+/* =========================================================
+ * Application to Course Catalog Cards (Left Pane)
+ * ========================================================= */
+.catalog-course-card[data-palette] {
+  border-left: 3.5px solid var(--course-accent);
+}
+
+.catalog-course-card[data-palette].is-enrolled {
+  border-left: 4.5px solid var(--course-accent);
+  background-color: var(--course-bg);
+  box-shadow: var(--neumorph-inset);
+}
+
+.catalog-course-card[data-palette]:hover {
+  background-color: var(--course-bg);
+  border-color: var(--course-border);
+  border-left-color: var(--course-accent);
+}
+
+.catalog-course-card[data-palette] .code-pill {
+  background-color: var(--course-bg);
+  border-color: var(--course-border);
+  color: var(--course-accent);
+}
+
+/* =========================================================
+ * Application to Syllabus Zen Bar (Right Pane)
+ * ========================================================= */
+.syllabus-zen-bar[data-palette] .code {
+  background-color: var(--course-bg);
+  border: 1px solid var(--course-border);
+  color: var(--course-accent);
+  padding: 1px 6px;
+  border-radius: var(--radius-xs);
+}
+
+/* =========================================================
+ * Application to AI Chat Recommended Course Cards
+ * ========================================================= */
+.ai-course-card[data-palette] {
+  border-left: 3.5px solid var(--course-accent);
+}
+
+.ai-course-card[data-palette] .ai-card-code {
+  color: var(--course-accent);
+  font-weight: 700;
+}
+

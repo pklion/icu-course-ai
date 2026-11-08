@@ -1,0 +1,523 @@
+/**
+ * Middle Pane: Rock-Solid CSS Grid Timetable Styling - Subtle Neumorphism
+ * 
+ * Direct 1:1 Unified Grid Architecture:
+ * - Row 1: Header (40px)
+ * - Rows 2, 3, 4: Periods 1, 2, 3 (minmax(80px, 1fr) on PC, stretched to screen bottom)
+ * - Row 5: Lunch Break (38px)
+ * - Rows 6, 7, 8, 9: Periods 4, 5, 6, 7 (minmax(80px, 1fr) on PC, stretched to screen bottom)
+ * 
+ * Every normal period row has identical height.
+ * Left time blocks and right day cells share the exact same row, guaranteeing perfect alignment.
+ * Super periods (*4, *5, *7) are displayed by physical size expansion.
+ * Top bar padding and sizes streamlined so credits count never wraps to 2 lines.
+ */
+
+.calendar-top-bar {
+  padding: 8px 14px;
+  background-color: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.term-selector {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.term-chip {
+  padding: 5px 12px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--neumorph-flat);
+  transition: var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.term-chip:hover {
+  background-color: var(--md-sys-color-surface);
+  box-shadow: var(--neumorph-hover);
+}
+
+.term-chip.active {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border-color: var(--md-sys-color-primary);
+  box-shadow: var(--neumorph-raised);
+}
+
+/* Grayscale Credit Meter - Soft Sunken Recess, Never Wraps to 2 Lines */
+.credit-stats-bar {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.grayscale-credit-meter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--md-sys-color-on-surface-variant);
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--neumorph-inset);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.grayscale-credit-meter strong {
+  color: var(--md-sys-color-on-surface);
+}
+
+.grayscale-credit-meter .sep {
+  opacity: 0.35;
+}
+
+.calendar-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.calendar-actions .m3-button {
+  padding: 5px 12px;
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+/* Scroll View: Flex Column so Grid Stretches to Bottom on PC */
+.timetable-scroll-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background-color: var(--md-sys-color-background);
+  padding-bottom: 28px; /* Space for super period 7 and comfortable scrolling */
+}
+
+/* Unified Grid Table: 7 Columns (Time + Mon..Sat), 9 Rows (Header + P1..P3 + Lunch + P4..P7)
+   On PC, minmax(80px, 1fr) stretches the rows proportionally to fill screen bottom */
+.timetable-grid-table {
+  flex: 1;
+  min-height: 638px;
+  display: grid;
+  grid-template-columns: 104px repeat(6, minmax(110px, 1fr));
+  grid-template-rows: 40px repeat(3, minmax(80px, 1fr)) 38px repeat(4, minmax(80px, 1fr));
+  min-width: 824px;
+  background-color: var(--md-sys-color-surface);
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  box-sizing: border-box;
+}
+
+/* Sticky Header Cells */
+.grid-header-cell {
+  background-color: var(--md-sys-color-surface);
+  border-bottom: 2px solid var(--md-sys-color-outline-variant);
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.time-header {
+  color: var(--md-sys-color-outline);
+  left: 0;
+  z-index: 30; /* Corner cell stays pinned on both axes */
+}
+
+.day-header .sub-kanji {
+  font-size: var(--font-size-xs);
+  color: var(--md-sys-color-outline);
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+/* Time Block Cells (Column 1, Rows 2-9) */
+.time-block-cell {
+  background-color: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 6px;
+  text-align: center;
+  box-sizing: border-box;
+  position: sticky;
+  left: 0;
+  z-index: 15;
+}
+
+.time-block-cell.lunch-time-block {
+  background-color: var(--color-lunch-bg);
+}
+
+.p-num {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+  line-height: 1.2;
+}
+
+.p-time {
+  font-size: 11px;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.2;
+}
+
+/* Timetable Cells (Day Columns 2-7, Rows 2-9) */
+.timetable-cell {
+  position: relative;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface);
+  box-sizing: border-box;
+  overflow: visible; /* Allows super periods to expand across adjacent boundaries */
+  transition: background-color 0.15s ease;
+}
+
+.timetable-cell.cell-drop-active {
+  background-color: rgba(39, 39, 42, 0.08);
+}
+
+[data-theme="dark"] .timetable-cell.cell-drop-active {
+  background-color: rgba(244, 244, 245, 0.09);
+}
+
+/* Lunch Cells */
+.timetable-cell.lunch-cell {
+  background-color: var(--color-lunch-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.lunch-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--md-sys-color-outline);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Cell Cards Wrapper */
+.cell-cards-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 4px;
+  padding: 2px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.cell-cards-wrapper.multi-cards {
+  gap: 3px;
+}
+
+/* Course Card Base - Subtle Tactile Neumorphic Lift */
+.calendar-card {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  border-radius: var(--radius-xs);
+  background-color: var(--card-bg-normal);
+  border: 1px solid var(--card-border-normal);
+  border-left: 3px solid var(--card-accent-normal);
+  box-shadow: var(--neumorph-card);
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.calendar-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--neumorph-hover);
+  filter: brightness(0.99);
+  z-index: 12;
+}
+
+/* Super Period Base */
+.calendar-card.card-super,
+.calendar-card.card-super-p4,
+.calendar-card.card-super-p5,
+.calendar-card.card-super-p7 {
+  background-color: var(--card-bg-normal);
+  border-color: var(--card-border-normal);
+  border-left: 3px solid var(--card-accent-super);
+  box-shadow: var(--neumorph-raised);
+}
+
+/* Physical Size Expansions for Super Periods (Proportional) */
+/* Super Period 4 (13:20 - 15:15): starts 32px up in Lunch row, ends at bottom of Period 4 */
+.calendar-card.card-super-p4 {
+  margin-top: -32px;
+  height: calc(100% + 32px);
+  z-index: 10;
+}
+
+/* Super Period 5 (15:25 - 17:20): starts at Period 5, extends 45% down into Period 6 */
+.calendar-card.card-super-p5 {
+  align-self: flex-start;
+  height: 145%;
+  z-index: 10;
+}
+
+/* Super Period 7 (18:15 - 20:10): starts at Period 7, extends 45% down past Period 7 */
+.calendar-card.card-super-p7 {
+  align-self: flex-start;
+  height: 145%;
+  z-index: 10;
+}
+
+/* PE Activity Card */
+.calendar-card.card-pe {
+  background-color: var(--card-bg-normal);
+  border-color: var(--card-border-normal);
+  border-left: 3px solid var(--card-accent-pe);
+  box-shadow: var(--neumorph-card);
+}
+
+/* Conflict Card */
+.calendar-card.card-conflict {
+  background-color: var(--card-bg-normal);
+  border: 1px dashed var(--card-border-conflict);
+  border-left: 3px solid var(--card-border-conflict);
+}
+
+/* Card Content Layout */
+.card-content {
+  padding: 5px 7px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.card-header-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.card-header-line .code {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 6px;
+  padding: 1px 5px;
+  box-shadow: var(--neumorph-flat);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  display: inline-block;
+  max-width: calc(100% - 24px);
+}
+
+.btn-card-del {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--md-sys-color-outline);
+  line-height: 1;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-xs);
+  transition: var(--transition-smooth);
+}
+
+.btn-card-del:hover {
+  color: var(--md-sys-color-on-surface);
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .btn-card-del:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.card-title-line {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin: 1px 0;
+  word-break: break-word;
+}
+
+/* Super cards have more vertical height, allowing up to 4 lines */
+.card-super-p4 .card-title-line,
+.card-super-p5 .card-title-line,
+.card-super-p7 .card-title-line,
+.card-super .card-title-line {
+  -webkit-line-clamp: 4;
+}
+
+.card-footer-line {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.card-footer-line .prof {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.card-header-line .badge-custom {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary, #ffffff);
+  padding: 1px 4px;
+  border-radius: var(--radius-xs);
+  letter-spacing: 0.3px;
+  margin-left: auto;
+  margin-right: 4px;
+}
+
+.ela-unplaced-banner {
+  background-color: var(--md-sys-color-surface-container);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--md-sys-color-on-surface-variant);
+  flex-shrink: 0;
+}
+
+.ela-unplaced-label {
+  font-weight: 600;
+  color: var(--md-sys-color-outline);
+}
+
+.ela-unplaced-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-primary);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow: var(--neumorph-flat);
+  transition: var(--transition-smooth);
+}
+
+.ela-unplaced-chip:hover {
+  background-color: var(--md-sys-color-surface);
+  box-shadow: var(--neumorph-hover);
+  transform: translateY(-1px);
+}
+
+.ela-unplaced-chip .chip-hint {
+  font-size: 10px;
+  color: var(--md-sys-color-outline);
+  font-weight: 400;
+}
+
+/* =========================================================
+ * Mobile Mode Timetable Styles (STRICTLY <= 768px)
+ * Fixed 80px rows for natural touch scrolling, no screen-stretching
+ * ========================================================= */
+@media (max-width: 768px) {
+  .calendar-top-bar {
+    padding: 6px 10px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .term-chip {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+
+  .grayscale-credit-meter {
+    padding: 4px 10px;
+    font-size: 10.5px;
+    gap: 5px;
+  }
+
+  .calendar-actions .m3-button {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .timetable-scroll-container {
+    display: block;
+    padding-bottom: 20px;
+  }
+
+  .timetable-grid-table {
+    flex: none;
+    min-height: auto;
+    grid-template-rows: 40px repeat(3, 80px) 38px repeat(4, 80px);
+    min-width: 660px;
+    grid-template-columns: 84px repeat(6, minmax(92px, 1fr));
+  }
+
+  .time-block-cell {
+    padding: 2px 4px;
+  }
+
+  .time-block-cell .p-time {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grayscale-credit-meter .sep {
+    display: none;
+  }
+}
