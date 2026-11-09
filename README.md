@@ -7,7 +7,7 @@
 
 An intelligent, local-first academic course planning assistant and timetable builder specifically designed for **International Christian University (ICU)** students. It combines an interactive 3-term visual timetable grid with an AI advising agent powered by Retrieval-Augmented Generation (RAG), working seamlessly across both cloud APIs and local offline LLMs.
 
-[Releases (Windows Executable)](https://github.com/pklion/icu-course-ai/releases/latest)
+[Deployment (Cloudflare Pages)](https://icu-course-ai.pages.dev/) / [Releases (Windows Executable)](https://github.com/pklion/icu-course-ai/releases/latest)
 
 ---
 
