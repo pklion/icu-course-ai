@@ -15,7 +15,7 @@ An intelligent, local-first academic course planning assistant and timetable bui
 ## 📌 Why Is This Useful?
 
 Course planning under ICU’s liberal arts curriculum is notoriously complex:
-- **Information Overload**: ICU’s syllabus catalog (e-Handbook) contains thousands of pages across dozens of majors, making manual searches tedious and time-consuming.
+- **Information Overload**: ICU’s syllabus catalog contains thousands of pages across dozens of majors, making manual searches tedious and time-consuming.
 - **Strict Registration Rules**: ICU enforces a strict term credit cap (**17.0 academic credits + 0.33 HPE credits = 17.33 total credits max per term**) across three terms (Spring, Autumn, Winter), alongside unique period slots including super periods (`*4`, `*5`, `*7`).
 - **Hidden Gem Discovery**: Students often miss out on interdisciplinary or introductory courses in unfamiliar majors simply because they do not have time to browse through every department's listings.
 
