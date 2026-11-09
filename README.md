@@ -4,7 +4,6 @@
 [![JavaScript](https://img.shields.io/badge/ES_Modules-Vanilla_JS-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Gemini](https://img.shields.io/badge/Google_Gemini-3.5_Flash--Lite-4285F4?logo=google)](https://ai.google.dev/)
 [![Ollama](https://img.shields.io/badge/Local_LLM-Ollama_%7C_llama.cpp-black?logo=ollama)](https://ollama.ai/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 An intelligent, local-first academic course planning assistant and timetable builder specifically designed for **International Christian University (ICU)** students. It combines an interactive 3-term visual timetable grid with an AI advising agent powered by Retrieval-Augmented Generation (RAG), working seamlessly across both cloud APIs and local offline LLMs.
 
